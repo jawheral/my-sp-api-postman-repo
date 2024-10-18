@@ -1,0 +1,3010 @@
+{
+	"info": {
+		"_postman_id": "13073aa9-1e75-4823-857b-d4c1d76c4c09",
+		"name": "Selling Partner API for Data Kiosk",
+		"description": "The Selling Partner API for Data Kiosk lets you submit GraphQL queries from a variety of schemas to help selling partners manage their businesses.\n\nContact Support:\n Name: Selling Partner API Developer Support",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "36203337-13073aa9-1e75-4823-857b-d4c1d76c4c09"
+	},
+	"item": [
+		{
+			"name": "dataKiosk",
+			"item": [
+				{
+					"name": "2023-11-15",
+					"item": [
+						{
+							"name": "queries",
+							"item": [
+								{
+									"name": "{queryId}",
+									"item": [
+										{
+											"name": "cancel Query",
+											"id": "468c00c8-bfb1-4d54-bc5d-735139a58dbc",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries",
+														":queryId"
+													],
+													"variable": [
+														{
+															"key": "queryId",
+															"value": "<string>",
+															"description": "(Required) The identifier for the query. This identifier is unique only in combination with a selling partner account ID."
+														}
+													]
+												},
+												"description": "Cancels the query specified by the `queryId` parameter. Only queries with a non-terminal `processingStatus` (`IN_QUEUE`, `IN_PROGRESS`) can be cancelled. Cancelling a query that already has a `processingStatus` of `CANCELLED` will no-op. Cancelled queries are returned in subsequent calls to the `getQuery` and `getQueries` operations.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 0.0222 | 10 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)."
+											},
+											"response": [
+												{
+													"id": "b81b9778-7971-48ae-8e04-282be8cd9361",
+													"name": "Success.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "No Content",
+													"code": 204,
+													"_postman_previewlanguage": "text",
+													"header": [
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "dfbfc2e6-4f2f-400e-b02a-9949886159d6"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "e6e08289-62cb-4e83-8afa-b7fe394d68ba"
+														}
+													],
+													"cookie": [],
+													"body": ""
+												},
+												{
+													"id": "75b2f69f-9e0b-45be-999e-091be39f9630",
+													"name": "Request has missing or invalid parameters and cannot be parsed.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "53949684-1c5f-40d8-91ca-b73f91212651"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "059f42bd-1fe8-43b5-a228-140a0c1130e9"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "15ceaee7-c936-4656-827b-9398e8a2976b"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "41d64bd6-4489-4c57-973b-856e380cb9d4",
+													"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "ead1397e-086a-47cd-b95d-d4ef9739e7f1"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "59da00c8-f6ba-4466-b58e-1b881446c6e7"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "254e6776-41d6-44c4-80fe-0db60edf57ef",
+													"name": "The resource specified does not exist.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "1387f8f7-3a04-437f-8f1f-3a1ddeffbae2"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "b8cfdccb-02e9-436c-a4e7-6bed3a24121c"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "9b805610-2196-4b54-83ca-f0c421adf01e"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "90c5f553-223d-41f5-8272-9c3f07badddd",
+													"name": "The request size exceeded the maximum accepted size.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Request Entity Too Large",
+													"code": 413,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "43ea3015-0b13-45ab-b418-40cc8d8c7f4f"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "d5063dc5-4f7a-4817-b367-f25658684534"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "857143c9-8ae1-41bf-975d-0d80841f38f6",
+													"name": "The request payload is in an unsupported format.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Unsupported Media Type",
+													"code": 415,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "71f2316a-81ff-49c4-9355-27ad7b35a8c0"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "3ad673be-3a0e-4d98-910d-0289aa209e7d"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "0fcd2060-070c-45f4-8552-91ec51cd16eb",
+													"name": "The frequency of requests was greater than allowed.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Too Many Requests",
+													"code": 429,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "74d29462-2e8d-4725-be2a-eb9f6d4f39a2"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "3c12086b-ce14-4328-a927-f6a1eac9a1d3"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "92c47e07-4a71-416d-951f-05dda525624e",
+													"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "2fd482c9-700a-4e54-a77f-e6fc6b750a51"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "165cde36-7499-4405-af47-f743b2bd5bf0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "9bdfb803-d6e1-4eaa-9ed9-2dd9e28e07cb",
+													"name": "Temporary overloading or maintenance of the server.",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Service Unavailable",
+													"code": 503,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "aa9f9b1f-32ed-4385-83fc-e22cd1946d9e"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "05eb7288-b60d-4cff-960c-674ae7069799"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										},
+										{
+											"name": "get Query",
+											"id": "9191cd6b-a9e0-4f83-84fe-37baa4910545",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries",
+														":queryId"
+													],
+													"variable": [
+														{
+															"key": "queryId",
+															"value": "<string>",
+															"description": "(Required) The query identifier."
+														}
+													]
+												},
+												"description": "Returns query details for the query specified by the `queryId` parameter. See the `createQuery` operation for details about query retention.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 2.0 | 15 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)."
+											},
+											"response": [
+												{
+													"id": "ca485149-f394-4692-8016-05147dbc646e",
+													"name": "Success.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "14891931-c12a-4704-b0c7-d1792a610694"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "5b570204-665c-47ab-aeb0-24d1c3f2b1a2"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "3cd5ba0f-f55a-4d8e-b3e0-5395b8709c5f"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"processingStatus\": \"DONE\",\n  \"queryId\": \"<string>\",\n  \"query\": \"<string>\",\n  \"createdTime\": \"<dateTime>\",\n  \"processingStartTime\": \"<dateTime>\",\n  \"processingEndTime\": \"<dateTime>\",\n  \"dataDocumentId\": \"<string>\",\n  \"errorDocumentId\": \"<string>\",\n  \"pagination\": {\n    \"nextToken\": \"<string>\"\n  }\n}"
+												},
+												{
+													"id": "ddfb66e8-615c-4c13-93e6-fbf39684b679",
+													"name": "Request has missing or invalid parameters and cannot be parsed.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "477e1dea-3f72-4a90-a4f8-d8135904d65b"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "5c89dc53-15d3-437c-82ec-d644ab8e8e8f"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "5897cdbd-2820-44f5-8a9d-1e121f3fa8be"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "1a35aaab-e5d3-4c19-ad8d-d5d23d86d3db",
+													"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "a1ef69e7-1021-42ea-81ea-5714bf095a69"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "8ed9839a-84a5-4d67-ae3f-a31f91df99d6"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "3199be49-80f0-426f-b71c-b904402528ae",
+													"name": "The resource specified does not exist.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "7193e123-c3a2-4e05-a578-be351f2ec914"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "78b8c473-63e9-4ab3-9820-c24a92e27773"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "d98fc8c0-2fa7-467c-b0f3-a55311fa06ee"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "592fc2bc-3cb1-4009-8435-5fdc444eafa1",
+													"name": "The request size exceeded the maximum accepted size.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Request Entity Too Large",
+													"code": 413,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "921e5de3-bf09-43f0-9b9e-6cdee40ced28"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "6b0f0c38-721f-4861-b885-808ac03bf3ae"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "8c94036e-ce12-4245-bbca-28efb2295b71",
+													"name": "The request payload is in an unsupported format.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Unsupported Media Type",
+													"code": 415,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "8dc6f3e7-6d70-45e6-8163-f44dfb3b5cb9"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "829423a8-09d1-4224-a407-be06daa33ccb"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "7316ccdf-3b3b-4aa0-b387-8484b8961130",
+													"name": "The frequency of requests was greater than allowed.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Too Many Requests",
+													"code": 429,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "482b15a8-fda4-4a33-b78a-a98a4500a46a"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "e7f31604-626b-481a-a30c-5590706401e8"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "6614b926-8c22-4dbe-9b47-57eb7284fa69",
+													"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "4c3dfc12-4f52-4701-be49-99c7eec5452a"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "c3d80adc-4c43-43a5-9c02-5efe1b33ddf7"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "3f02935b-44d1-4af2-9b1b-69cd3bcd0479",
+													"name": "Temporary overloading or maintenance of the server.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries/:queryId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"queries",
+																":queryId"
+															],
+															"variable": [
+																{
+																	"key": "queryId"
+																}
+															]
+														}
+													},
+													"status": "Service Unavailable",
+													"code": 503,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "5ae6e7ca-218b-4c88-9837-0988addff59a"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "ddee03b6-2c84-4c7b-aa39-151b3197c29a"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									],
+									"id": "30fb6180-d623-4ffd-b2a2-b38c9a351e69"
+								},
+								{
+									"name": "get Queries",
+									"id": "6383abf2-3e1e-4213-8112-e6c06a6c4c29",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"dataKiosk",
+												"2023-11-15",
+												"queries"
+											],
+											"query": [
+												{
+													"key": "processingStatuses",
+													"value": "CANCELLED",
+													"description": "A list of processing statuses used to filter queries."
+												},
+												{
+													"key": "pageSize",
+													"value": "10",
+													"description": "The maximum number of queries to return in a single call."
+												},
+												{
+													"key": "createdSince",
+													"value": "<dateTime>",
+													"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago."
+												},
+												{
+													"key": "createdUntil",
+													"value": "<dateTime>",
+													"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request."
+												},
+												{
+													"key": "paginationToken",
+													"value": "<string>",
+													"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results."
+												}
+											]
+										},
+										"description": "Returns details for the Data Kiosk queries that match the specified filters. See the `createQuery` operation for details about query retention.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 0.0222 | 10 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)."
+									},
+									"response": [
+										{
+											"id": "44cb3fbb-975d-45eb-a1da-dcf3c0f600ab",
+											"name": "Success.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "2ad1a8f5-b443-4c3a-a411-b84f2abbe2fc"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "cf995627-a1fd-4d1d-9c51-f0445e08b847"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "c0bc980e-8534-4ed0-92ae-7c9a02e8d733"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"queries\": [\n    {\n      \"processingStatus\": \"DONE\",\n      \"queryId\": \"<string>\",\n      \"query\": \"<string>\",\n      \"createdTime\": \"<dateTime>\",\n      \"processingStartTime\": \"<dateTime>\",\n      \"processingEndTime\": \"<dateTime>\",\n      \"dataDocumentId\": \"<string>\",\n      \"errorDocumentId\": \"<string>\",\n      \"pagination\": {\n        \"nextToken\": \"<string>\"\n      }\n    },\n    {\n      \"processingStatus\": \"FATAL\",\n      \"queryId\": \"<string>\",\n      \"query\": \"<string>\",\n      \"createdTime\": \"<dateTime>\",\n      \"processingStartTime\": \"<dateTime>\",\n      \"processingEndTime\": \"<dateTime>\",\n      \"dataDocumentId\": \"<string>\",\n      \"errorDocumentId\": \"<string>\",\n      \"pagination\": {\n        \"nextToken\": \"<string>\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"nextToken\": \"<string>\"\n  }\n}"
+										},
+										{
+											"id": "e6751557-fd7c-4e57-91f1-d341016f615a",
+											"name": "Request has missing or invalid parameters and cannot be parsed.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "eedf340a-3046-44d0-b63a-0ff7c32ad9bf"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "8e319797-0fbd-432f-8a1f-50038a9ed433"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "6228c372-53df-434f-a501-72692efe737f"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "ff199f6b-6f20-4bad-af34-dd4014c63572",
+											"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "78e81c80-c763-4589-bb11-a943091a8c63"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "83ef14a7-9e52-4001-9f4d-b830ddcb81da"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "d18b8b10-2804-4e1f-b6c5-5f9c1ea7b007",
+											"name": "The resource specified does not exist.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "73351ab6-f758-458f-a249-6efc1af16bea"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "4440fae1-005b-4555-a7e6-645ec959df1a"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "1373d7e9-5238-44ca-be30-3fae7df4ac22"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "6225bd33-4435-4247-889a-bb896202064e",
+											"name": "The request size exceeded the maximum accepted size.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Request Entity Too Large",
+											"code": 413,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "5560269c-3f2a-4da6-9e31-447f037fd121"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "46cc51fe-dc2f-4fe0-82d9-a80a5b249a2a"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "394131de-6113-406d-b2bf-ca8db21df343",
+											"name": "The request payload is in an unsupported format.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "01d22316-ff13-4e9e-ab22-3189e2e60b48"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "0661f99c-7fa8-4b15-b2ee-7309a402e6ea"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "14a6da54-8e5c-4913-b010-c01014e04f96",
+											"name": "The frequency of requests was greater than allowed.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "55144877-1061-4a8f-a5f6-f902b84c53cb"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "c34c0163-eb36-4e72-a12a-a0da094116b6"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "67ecac62-f89b-4c92-8516-25a3f5ea779e",
+											"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "eba3d8ef-64f3-46ea-bbf9-9e58da38f8e3"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "eacee07d-8bd2-4645-bbcf-f372eb11c6c2"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "5d07d91a-d085-443f-87eb-8b78e88c5e6b",
+											"name": "Temporary overloading or maintenance of the server.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries?processingStatuses=CANCELLED&pageSize=10&createdSince=<dateTime>&createdUntil=<dateTime>&paginationToken=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													],
+													"query": [
+														{
+															"description": "A list of processing statuses used to filter queries.",
+															"key": "processingStatuses",
+															"value": "CANCELLED"
+														},
+														{
+															"description": "The maximum number of queries to return in a single call.",
+															"key": "pageSize",
+															"value": "10"
+														},
+														{
+															"description": "The earliest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is 90 days ago.",
+															"key": "createdSince",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "The latest query creation date and time for queries to include in the response, in ISO 8601 date time format. The default is the time of the `getQueries` request.",
+															"key": "createdUntil",
+															"value": "<dateTime>"
+														},
+														{
+															"description": "A token to fetch a certain page of results when there are multiple pages of results available. The value of this token is fetched from the `pagination.nextToken` field returned in the `GetQueriesResponse` object. All other parameters must be provided with the same values that were provided with the request that generated this token, with the exception of `pageSize` which can be modified between calls to `getQueries`. In the absence of this token value, `getQueries` returns the first page of results.",
+															"key": "paginationToken",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "4979bfb2-8b32-4990-bf1b-ba17e892fe71"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "852eb1bb-bddc-493f-9097-11e36ec2f64c"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "create Query",
+									"id": "8475c72d-f94a-44de-8430-17d8768fbdaf",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"dataKiosk",
+												"2023-11-15",
+												"queries"
+											]
+										},
+										"description": "Creates a Data Kiosk query request.\n\n**Note:** The retention of a query varies based on the fields requested. Each field within a schema is annotated with a `@resultRetention` directive that defines how long a query containing that field will be retained. When a query contains multiple fields with different retentions, the shortest (minimum) retention is applied. The retention of a query's resulting documents always matches the retention of the query.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 0.0167 | 15 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)."
+									},
+									"response": [
+										{
+											"id": "bbe4576c-890b-48d0-8416-abe49a451fad",
+											"name": "Success.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Accepted",
+											"code": 202,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "c9a6217c-0548-4edf-a86b-be0b1d4c26c0"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "0808a265-4a1e-4eab-8196-7d95c9789508"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "14a75a90-2b40-4345-a519-e43c6c661da6"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"queryId\": \"<string>\"\n}"
+										},
+										{
+											"id": "d8b1d2b2-2b44-441d-80ae-706770c30f39",
+											"name": "Request has missing or invalid parameters and cannot be parsed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "28ab6f64-ee44-49b8-aaf2-1ae9b83e5b8a"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "4110f954-db3d-4154-80dc-0596af6a3bab"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "cac39726-0e8b-4338-b797-54e4c583a822"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "6dab45c8-fc5f-4d75-9b34-2827d82348c6",
+											"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "4d5d7bbb-c49e-40dd-8e63-7e72192614d6"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "2889d3ee-018e-4007-aca7-061f381365aa"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "37b5225a-a24e-40fa-9ce0-55708effce31",
+											"name": "The resource specified does not exist.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "179a84aa-4770-484c-9169-cd9a698d08d0"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "1cc7b6d9-03e7-443d-b63e-de126cc3922b"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "71a6fffb-e352-4c70-96d2-26aa88ec6bee"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "7d96e9a4-f2e5-4f05-bd4a-ed2fbf802c17",
+											"name": "The request size exceeded the maximum accepted size.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Request Entity Too Large",
+											"code": 413,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "4dc2ea5e-b034-478d-9552-310413cae365"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "44308a11-e5f7-4766-bd2b-2f397cb72799"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "bf687510-151a-45ff-ac54-e1750c7351b8",
+											"name": "The request payload is in an unsupported format.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "1cd1dfc7-545a-4248-b9d5-f112c461a1b1"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "28310e60-cfaf-479f-9bcb-ae95b365d142"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "d6c42a84-52b7-4d4d-8fe1-c4bd2fc11e0c",
+											"name": "The frequency of requests was greater than allowed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "2ba701d6-669a-4f3b-8701-99a97929faea"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "b7d70b03-5530-458f-9155-0ef7a079e49a"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "f74f4ac0-0afc-433d-84a0-743da439e705",
+											"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "f87f88c5-4f8c-43b9-8785-afcc9af7e51d"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "d4292221-ed8d-4c9b-a5e6-214769696a19"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "1603b711-e671-49b2-aca6-2eec88fa0e20",
+											"name": "Temporary overloading or maintenance of the server.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"query\": \"<string>\",\n  \"paginationToken\": \"<string>\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/queries",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"queries"
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "c5901123-8981-4437-8f46-55f97634cf85"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "42f9dc49-6bf3-4492-b22f-ef166fa3f4e7"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							],
+							"id": "1c7f677a-b9ed-4189-ba15-81759a457cbc"
+						},
+						{
+							"name": "documents",
+							"item": [
+								{
+									"name": "{documentId}",
+									"item": [
+										{
+											"name": "get Document",
+											"id": "2b149164-1011-4461-a857-214523d93914",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"dataKiosk",
+														"2023-11-15",
+														"documents",
+														":documentId"
+													],
+													"variable": [
+														{
+															"key": "documentId",
+															"value": "<string>",
+															"description": "(Required) The identifier for the Data Kiosk document."
+														}
+													]
+												},
+												"description": "Returns the information required for retrieving a Data Kiosk document's contents. See the `createQuery` operation for details about document retention.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 0.0167 | 15 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, refer to [Usage Plans and Rate Limits in the Selling Partner API](https://developer-docs.amazon.com/sp-api/docs/usage-plans-and-rate-limits-in-the-sp-api)."
+											},
+											"response": [
+												{
+													"id": "57d2c7df-36fd-4501-bedd-43b02339efd2",
+													"name": "Success.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "e9e4f849-e02d-468e-a3d8-c02967117100"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "0bf1441a-6f53-4655-bd17-aa952fd4ed40"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "14ebc93a-fdbe-4aeb-ab6d-e8e08f901c42"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"documentId\": \"<string>\",\n  \"documentUrl\": \"<string>\"\n}"
+												},
+												{
+													"id": "c8fb9f57-79fc-469e-ad1f-7a5e2832d8a3",
+													"name": "Request has missing or invalid parameters and cannot be parsed.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "4099fa70-07f2-4ae7-a90b-2dda72773468"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "c2323b6a-fe53-4ee9-b530-1ea2648c037b"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "4cde2b28-6a51-4bd0-9be4-a51037aa92ad"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "4f6a16cd-492e-4630-92e0-455bbf30bfc6",
+													"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "a6f37395-44ec-4a6d-9a37-5556798835b3"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "c6128ace-c2dc-42e0-a6ac-8f4804ae1252"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "f7a8df19-faf6-4b6e-ba63-00cad2c7de4c",
+													"name": "The resource specified does not exist.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "3290bd27-2c24-420b-be7f-2f4fb0eafe83"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "848a578b-2c62-4890-98c3-1be8139e38e7"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "d8495f9d-d36e-43f6-b67e-50713e7a9bf2"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "b3658751-1f7e-4e51-a7e9-2958bac022da",
+													"name": "The request size exceeded the maximum accepted size.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Request Entity Too Large",
+													"code": 413,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "d8de4fbf-a31d-4ea5-a8dd-36e540bd781c"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "59f43868-5d76-4fd8-b9f8-a39295ac760d"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "3b22cc00-9ad2-4f95-9b4b-4d58d0d4b49d",
+													"name": "The request payload is in an unsupported format.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Unsupported Media Type",
+													"code": 415,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "af5cbcc9-61ee-44c3-b245-1665864e45f3"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "580f83d8-3521-42b8-98b7-7e5ebb8d2917"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "b024196c-0867-4b83-8c16-7debbf97fa5b",
+													"name": "The frequency of requests was greater than allowed.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Too Many Requests",
+													"code": 429,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "ab6995a5-95e9-480d-b64d-acb56b4c8232"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "7a2b53bd-a951-4dfe-8a49-e7233fbb3afa"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "c6f070b9-f53b-48c4-af84-5ea38aa832a3",
+													"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "bb8f2d54-3d3f-41ad-b98e-e2fe80ebef8a"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "c21e42da-4308-4069-a1c5-ed60d40d69e0"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "236aad23-f443-42b3-95a5-54bfdda789c7",
+													"name": "Temporary overloading or maintenance of the server.",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/dataKiosk/2023-11-15/documents/:documentId",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"dataKiosk",
+																"2023-11-15",
+																"documents",
+																":documentId"
+															],
+															"variable": [
+																{
+																	"key": "documentId"
+																}
+															]
+														}
+													},
+													"status": "Service Unavailable",
+													"code": 503,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "506d4886-61b0-4a92-b56d-03d0e0226458"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "6b1cba52-9ec4-490c-8709-0134d704dd2b"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									],
+									"id": "b905a827-8868-4914-8883-e272d745c6ee"
+								}
+							],
+							"id": "8658b4ec-58f8-4bff-ba4b-40970ac0adf5"
+						}
+					],
+					"id": "7a5408d9-6052-4387-a939-ff71d7da85d0"
+				}
+			],
+			"id": "a2dd11d2-4442-465e-a304-27a1aafd18a0"
+		}
+	],
+	"variable": [
+		{
+			"id": "52f36ef5-7a7c-4396-82b5-d3e744c2556d",
+			"key": "baseUrl",
+			"value": "https://sellingpartnerapi-na.amazon.com"
+		}
+	]
+}

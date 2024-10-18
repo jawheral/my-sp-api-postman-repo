@@ -1,0 +1,3413 @@
+{
+	"info": {
+		"_postman_id": "7e871ada-4465-493b-8002-21a9c1dc19cd",
+		"name": "Selling Partner API for Easy Ship",
+		"description": "The Selling Partner API for Easy Ship helps you build applications that help sellers manage and ship Amazon Easy Ship orders.\n\nYour Easy Ship applications can:\n\n* Get available time slots for packages to be scheduled for delivery.\n\n* Schedule, reschedule, and cancel Easy Ship orders.\n\n* Print labels, invoices, and warranties.\n\nSee the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) for the differences in Easy Ship operations by marketplace.\n\nContact Support:\n Name: Selling Partner API Developer Support",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "36203337-7e871ada-4465-493b-8002-21a9c1dc19cd"
+	},
+	"item": [
+		{
+			"name": "easyShip",
+			"item": [
+				{
+					"name": "2022-03-23",
+					"item": [
+						{
+							"name": "timeSlot",
+							"item": [
+								{
+									"name": "list Handover Slots",
+									"id": "fa7ae889-c889-45ca-9782-804aaebf0fba",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"easyShip",
+												"2022-03-23",
+												"timeSlot"
+											]
+										},
+										"description": "Returns time slots available for Easy Ship orders to be scheduled based on the package weight and dimensions that the seller specifies.\n\nThis operation is available for scheduled and unscheduled orders based on marketplace support. See **Get Time Slots** in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table).\n\nThis operation can return time slots that have either pickup or drop-off handover methods - see **Supported Handover Methods** in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table).\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 1 | 5 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api)."
+									},
+									"response": [
+										{
+											"id": "4d6204d4-4fdc-4093-bec2-81f07aa260bf",
+											"name": "Success.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "220beddb-8fc5-4179-8085-50eacd0c089e"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "5fdb8e49-12b2-43e1-a416-674d0251fa6c"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "a8570418-6307-455e-8dcc-d30171c36ea6"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"amazonOrderId\": \"<string>\",\n  \"timeSlots\": [\n    {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Pickup\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "63fc1fe4-03a0-409a-9991-8e1b30f9e845",
+											"name": "Request has missing or invalid parameters and cannot be parsed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "8ae9ef54-a874-492f-9cbd-2d82a9dcdaae"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "c5dc0d16-6883-4176-b767-438cc5f7b5b8"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "38c93caf-efd2-45b2-8e3a-5f73652f0b12"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "80526e52-9721-4ee8-bfbf-b45654cea5bd",
+											"name": "The request's Authorization header is not formatted correctly or does not contain a valid token.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "ac184426-f3bf-469b-9930-c583ab8c6acd"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "7c412e2a-fa75-4a78-9cbe-520af4e1d137"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "061a68b0-8c96-4af8-9543-ba0308baaa5d",
+											"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "61682d0f-58c5-4462-b96f-02ef823f0595"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "609c984f-ecd2-4f8e-bced-423b3d236992"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "8788ffc7-6c54-421e-b634-609c829414b8",
+											"name": "The resource specified does not exist.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "629080bb-781d-48e9-931f-4b6cdbad25fd"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "26078453-025a-4b40-97bf-878913de4b25"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "cfbbed04-1742-404e-a518-bdfa3ff909b1"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "ed7e1382-f5ad-4560-95cf-b08c4d806769",
+											"name": "The request size exceeded the maximum accepted size.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Request Entity Too Large",
+											"code": 413,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "0b25867c-5893-4843-b5e4-d10e496c8e80"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "4db90ae3-3b25-42a9-b43f-633208943ee1"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "1ae5cb4c-6918-4667-900d-a238aecd3b86",
+											"name": "The request payload is in an unsupported format.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "29bbfe31-938e-4507-a8fd-9998f2664aa7"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "c65f78d2-5c83-47d4-97e1-baef85392c29"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "5aff9f7b-8d6e-40f0-9d7a-84625b9c0a27",
+											"name": "The frequency of requests was greater than allowed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "dbd3a397-e4b5-4248-8cce-091186ba1727"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "b7b628b1-5348-4f88-aa6d-2c3b8f4d9776"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "d440c41f-e8e0-400f-ab9c-3698b2565a53",
+											"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "d54f80cc-0026-4c6e-80de-b2df08698467"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "30dba9ed-f121-448d-9af2-d78a6e5324ee"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "05dd97f1-97ed-4edd-a6c8-6b02f8de941d",
+											"name": "Temporary overloading or maintenance of the server.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"amazonOrderId\": \"<string>\",\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"G\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/timeSlot",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"timeSlot"
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "8ac4fc9f-bf2f-419d-a1b2-fb4e4d5d3682"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "c28e7873-ecca-48bb-94fd-3a9f5bff49b4"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							],
+							"id": "102cf86e-8ad6-4ab6-a2f0-90b214bf3451"
+						},
+						{
+							"name": "package",
+							"item": [
+								{
+									"name": "get Scheduled Package",
+									"id": "dc0d21f8-d515-47d3-bc65-adac67f9bc12",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"easyShip",
+												"2022-03-23",
+												"package"
+											],
+											"query": [
+												{
+													"key": "amazonOrderId",
+													"value": "<string>",
+													"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship."
+												},
+												{
+													"key": "marketplaceId",
+													"value": "<string>",
+													"description": "(Required) An identifier for the marketplace in which the seller is selling."
+												}
+											]
+										},
+										"description": "Returns information about a package, including dimensions, weight, time slot information for handover, invoice and item information, and status.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 1 | 5 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api)."
+									},
+									"response": [
+										{
+											"id": "4385d219-967c-48bc-9477-3bbadbdf8748",
+											"name": "Success.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "3a3e83ac-6ab8-4d99-b654-08dac1e2da6a"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "e33250ef-bda0-44a0-bb00-072071832ad5"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "513c2d20-baa7-4c08-8a6f-74417e585ef4"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageTimeSlot\": {\n    \"slotId\": \"<string>\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"handoverMethod\": \"Pickup\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"Grams\"\n  },\n  \"scheduledPackageId\": {\n    \"amazonOrderId\": \"<string>\",\n    \"packageId\": \"<string>\"\n  },\n  \"packageItems\": [\n    {\n      \"orderItemId\": \"<string>\",\n      \"orderItemSerialNumbers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"orderItemId\": \"<string>\",\n      \"orderItemSerialNumbers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"packageIdentifier\": \"<string>\",\n  \"invoice\": {\n    \"invoiceNumber\": \"<string>\",\n    \"invoiceDate\": \"<dateTime>\"\n  },\n  \"packageStatus\": \"LostInTransit\",\n  \"trackingDetails\": {\n    \"trackingId\": \"<string>\"\n  }\n}"
+										},
+										{
+											"id": "05cac83e-79f4-4b9a-b348-28dbbb6635b9",
+											"name": "Request has missing or invalid parameters and cannot be parsed.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "77ed610f-4a96-4e35-853b-987a4dd0a6b3"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "040eb3f7-f99f-4978-920f-4e9dab4687d4"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "6347c5ae-fd9a-49a9-a749-0624205398e6"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "c0a9104f-a4ed-4933-b969-0c4bd8d578e8",
+											"name": "The request's Authorization header is not formatted correctly or does not contain a valid token.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "b67df8df-b86b-44bf-a40f-cab4bca488cb"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "d5a82868-0884-441d-82ff-7c0a54a2ead7"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "4db6942a-6c17-424a-9ef2-431f2422454a",
+											"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "728c7af4-2d8c-4f94-b73f-1b582deebd46"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "729bb120-b3eb-49cb-b0cf-7331fd23293c"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "96527e51-85e0-4b38-8a67-b451f4be9ee8",
+											"name": "The resource specified does not exist.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "53b5d422-b165-4d21-9a44-76fe50b4472f"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "f64dea2f-18dc-4009-ba9f-c14319514f16"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "44e09016-afb7-4584-ba3f-fc8db07b6e0b"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "775e5aa9-a668-4769-b149-6d6c87c9b0e5",
+											"name": "The request size exceeded the maximum accepted size.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Request Entity Too Large",
+											"code": 413,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "756572c6-37cd-4995-9257-079cf9a06536"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "c27c52b3-53d7-4964-b0e9-c5226207cd0e"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "984f5c34-d14c-411f-a183-19af5906c581",
+											"name": "The request payload is in an unsupported format.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "5e84f716-5af4-41b6-80b9-56971e2e58da"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "529ad8be-a167-4d9d-860a-da29f369e03a"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "5dd7c670-98a4-4655-85e0-af7563eece59",
+											"name": "The frequency of requests was greater than allowed.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "9704c736-eeb1-456e-bec5-5d400c9fe8a5"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "fb7bdb06-f007-4458-9dc5-dd1550a63dff"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "a94bdb46-c2cb-45c0-aa9c-50cde6cac4d1",
+											"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "2c56b31f-0a89-479b-a1bb-75a7ed1e4741"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "73d00da5-73d2-4d1c-a90a-ebf9886d921e"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "1e037d99-8e33-465c-89d9-d09f052b9246",
+											"name": "Temporary overloading or maintenance of the server.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package?amazonOrderId=<string>&marketplaceId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													],
+													"query": [
+														{
+															"description": "(Required) An Amazon-defined order identifier. Identifies the order that the seller wants to deliver using Amazon Easy Ship.",
+															"key": "amazonOrderId",
+															"value": "<string>"
+														},
+														{
+															"description": "(Required) An identifier for the marketplace in which the seller is selling.",
+															"key": "marketplaceId",
+															"value": "<string>"
+														}
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "6de45a40-de26-4ebb-b62d-22b915de1eee"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "fda38e1a-70d8-47f0-9f11-7c75aa7b5021"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "create Scheduled Package",
+									"id": "f4f7b962-945a-4ef1-bfbf-789c0d1f753f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"easyShip",
+												"2022-03-23",
+												"package"
+											]
+										},
+										"description": "Schedules an Easy Ship order and returns the scheduled package information.\n\nThis operation does the following:\n\n*  Specifies the time slot and handover method for the order to be scheduled for delivery.\n\n* Updates the Easy Ship order status.\n\n* Generates a shipping label and an invoice. Calling `createScheduledPackage` also generates a warranty document if you specify a `SerialNumber` value. To get these documents, see [How to get invoice, shipping label, and warranty documents](doc:easyship-api-v2022-03-23-use-case-guide).\n\n* Shows the status of Easy Ship orders when you call the `getOrders` operation of the Selling Partner API for Orders and examine the `EasyShipShipmentStatus` property in the response body.\n\nSee the **Shipping Label**, **Invoice**, and **Warranty** columns in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which documents are supported in each marketplace.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 1 | 5 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api)."
+									},
+									"response": [
+										{
+											"id": "11b7e3b6-eaaf-496d-bcc7-83a8b7fb64af",
+											"name": "Success.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "f6f38adc-72e3-4808-9a30-da97abf9e5f3"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "4278d6da-de99-4435-ae31-114905c9f52e"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "e7dd10a8-22b1-42ef-ad5d-bde60e308d88"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"packageDimensions\": {\n    \"length\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"unit\": \"Cm\",\n    \"identifier\": \"<string>\"\n  },\n  \"packageTimeSlot\": {\n    \"slotId\": \"<string>\",\n    \"startTime\": \"<dateTime>\",\n    \"endTime\": \"<dateTime>\",\n    \"handoverMethod\": \"Pickup\"\n  },\n  \"packageWeight\": {\n    \"value\": \"<float>\",\n    \"unit\": \"Grams\"\n  },\n  \"scheduledPackageId\": {\n    \"amazonOrderId\": \"<string>\",\n    \"packageId\": \"<string>\"\n  },\n  \"packageItems\": [\n    {\n      \"orderItemId\": \"<string>\",\n      \"orderItemSerialNumbers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"orderItemId\": \"<string>\",\n      \"orderItemSerialNumbers\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"packageIdentifier\": \"<string>\",\n  \"invoice\": {\n    \"invoiceNumber\": \"<string>\",\n    \"invoiceDate\": \"<dateTime>\"\n  },\n  \"packageStatus\": \"LostInTransit\",\n  \"trackingDetails\": {\n    \"trackingId\": \"<string>\"\n  }\n}"
+										},
+										{
+											"id": "bac6cb58-877f-49ba-9037-d086a77c190d",
+											"name": "Request has missing or invalid parameters and cannot be parsed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "c9f8ec01-31b4-45c5-9385-17fac342640c"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "81db5064-4024-42cc-a4ee-4fdd1d307ce3"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "11370e89-7e81-477e-a050-c26532790551"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "77a2fbdf-af35-4024-941b-0e7526351ea0",
+											"name": "The request's Authorization header is not formatted correctly or does not contain a valid token.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "31459dc2-941c-4c78-9272-02879ffee031"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "8877303b-c298-4fdf-9465-e73cea42246f"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "6c9b2461-f3b8-4821-8080-d73a56030651",
+											"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "b1848821-7003-4aa5-9303-ce919dd776da"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "cd64cc01-5a1d-4e5b-b096-8b5fe589fc14"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "c42de1b4-984b-43e6-8875-5a779a83b229",
+											"name": "The resource specified does not exist.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "533cc623-d93a-4431-a73f-ed6c57d5dc3b"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "691d565f-3143-412d-a08e-c8780e4c2995"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "132cb378-ac62-479e-9656-70e2768558f4"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "62f325b8-6790-4cfe-808b-2599ee8f969d",
+											"name": "The request size exceeded the maximum accepted size.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Request Entity Too Large",
+											"code": 413,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "7ebd2e3b-3ba0-469a-8b39-55254d28fe95"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "11c7a674-5614-4852-a087-08988b272d49"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "85f95311-b171-43b4-8055-b7406867aeec",
+											"name": "The request payload is in an unsupported format.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "57ee8f00-eb43-4ab3-8282-6757f9118424"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "1af80187-a376-40ef-8edc-f1a2abffc5cd"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "5b55300b-5a94-41f4-9e67-2acaee341975",
+											"name": "The frequency of requests was greater than allowed.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "89a202bb-0300-4ca9-8c92-b3f28098e4ca"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "fba5b4b5-4d5f-4aa9-8239-5eabb072a434"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "5d57299d-b815-4052-9bff-bbe617949180",
+											"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "18efd7cc-dc84-4110-b3d2-5629700fad94"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "0a2542c1-8ffa-4c87-b1d9-6c4189c0d26a"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "e941fd0c-9027-440d-9992-82101b786662",
+											"name": "Temporary overloading or maintenance of the server.",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"amazonOrderId\": \"<string>\",\n  \"marketplaceId\": \"<string>\",\n  \"packageDetails\": {\n    \"packageTimeSlot\": {\n      \"slotId\": \"<string>\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"handoverMethod\": \"Dropoff\"\n    },\n    \"packageItems\": [\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"orderItemId\": \"<string>\",\n        \"orderItemSerialNumbers\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"packageIdentifier\": \"<string>\"\n  }\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "34d722c6-a018-4d28-9199-3d09e69b4144"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "78c4497c-95ff-458f-b31a-2db45d3616d7"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								},
+								{
+									"name": "update Scheduled Packages",
+									"id": "dedcef1a-c8f6-4884-b165-44f0e1d8437b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"easyShip",
+												"2022-03-23",
+												"package"
+											]
+										},
+										"description": "Updates the time slot for handing over the package indicated by the specified `scheduledPackageId`. You can get the new `slotId` value for the time slot by calling the `listHandoverSlots` operation before making another `patch` call.\n\nSee the **Update Package** column in the [Marketplace Support Table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table) to see which marketplaces this operation is supported in.\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 1 | 5 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api)."
+									},
+									"response": [
+										{
+											"id": "4501559e-a796-4f69-abe9-20e797a9f872",
+											"name": "Success",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "a0c5c668-0b09-4ab8-ba60-a270a5f7717f"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "f81740c2-6799-4643-a4bb-b265fa4d807a"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "8a432c00-c31d-47e3-895c-0be2179876d7"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"packages\": [\n    {\n      \"packageDimensions\": {\n        \"length\": \"<float>\",\n        \"width\": \"<float>\",\n        \"height\": \"<float>\",\n        \"unit\": \"Cm\",\n        \"identifier\": \"<string>\"\n      },\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"packageWeight\": {\n        \"value\": \"<float>\",\n        \"unit\": \"Grams\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      },\n      \"packageItems\": [\n        {\n          \"orderItemId\": \"<string>\",\n          \"orderItemSerialNumbers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"orderItemId\": \"<string>\",\n          \"orderItemSerialNumbers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"packageIdentifier\": \"<string>\",\n      \"invoice\": {\n        \"invoiceNumber\": \"<string>\",\n        \"invoiceDate\": \"<dateTime>\"\n      },\n      \"packageStatus\": \"AtDestinationFC\",\n      \"trackingDetails\": {\n        \"trackingId\": \"<string>\"\n      }\n    }\n  ]\n}"
+										},
+										{
+											"id": "0753c90a-d905-4bbc-a7c2-2ddcf8cfb86c",
+											"name": "Request has missing or invalid parameters and cannot be parsed.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "61493233-f980-4a60-9a76-2eb29541d3e6"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "509b1da1-1217-4780-95cc-f2d243c4da6f"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "fb6ab642-f76c-4eea-8903-c52ef40ff9a2"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "1c2862ae-1a63-494a-9104-c1c6676c186a",
+											"name": "The request's Authorization header is not formatted correctly or does not contain a valid token.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Unauthorized",
+											"code": 401,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "b9072dd4-0aa9-44c2-a035-68f71ce64084"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "44e301a2-f6b9-4681-a452-e84b0a9b5682"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "8f302bf2-9f31-484c-904e-d9ba88f9d108",
+											"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Forbidden",
+											"code": 403,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "1be3344a-2580-484b-85bd-930919dee8e3"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "262c6695-d7ae-4841-a034-74e09ad49291"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "e54edc0e-f70b-47e1-a14d-c12af411d47c",
+											"name": "The resource specified does not exist.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "8ec25523-4546-4006-9075-7dff639d6afb"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Your rate limit (requests per second) for this operation.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RateLimit-Limit",
+													"value": "<string>",
+													"uuid": "b08647ee-8e2e-4e3d-bb39-a3613e680284"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "3a381309-6bb7-4aeb-a2db-b6cbd26f3b8b"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "fab67407-9420-430f-9fb9-9acb192134f1",
+											"name": "The request size exceeded the maximum accepted size.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Request Entity Too Large",
+											"code": 413,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "a021a33d-5220-48c8-94f9-d1324121e236"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "0f5b9725-777f-4921-bc30-bbe65f19350f"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "968594f2-b09b-4635-8f65-077b2838c5d0",
+											"name": "The request payload is in an unsupported format.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "759e78ca-bb9d-42e3-9581-bb1936a3505c"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "e33688e0-347a-4608-b493-14ebfd0d6d42"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "ca330e1f-a7b5-4334-af0d-65193c7355f4",
+											"name": "The frequency of requests was greater than allowed.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Too Many Requests",
+											"code": 429,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "40c378c3-d2bb-4c0a-b3fc-254e0b55cfd3"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "2ed73e38-dd50-40d9-bf3d-afe4941ec96f"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "8412cde8-ecb4-4c07-b25c-6a707466b453",
+											"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "c4ed7f95-1a3e-4bc3-a958-0321bd058d8d"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "bf67f3da-a5ba-4ed7-abec-c51b6193bed3"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										},
+										{
+											"id": "30b784fb-65a7-4822-b8e9-0e9ed5d68840",
+											"name": "Temporary overloading or maintenance of the server.",
+											"originalRequest": {
+												"method": "PATCH",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"updatePackageDetailsList\": [\n    {\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      }\n    }\n  ]\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/package",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"package"
+													]
+												}
+											},
+											"status": "Service Unavailable",
+											"code": 503,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json",
+													"uuid": "ab360a62-ff03-4539-aa49-08e6e81553f5"
+												},
+												{
+													"disabled": false,
+													"description": {
+														"content": "Unique request reference identifier.",
+														"type": "text/plain"
+													},
+													"key": "x-amzn-RequestId",
+													"value": "<string>",
+													"uuid": "2f4528c2-45ac-4eaf-b102-987b80a16efb"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+										}
+									]
+								}
+							],
+							"id": "3ac25011-3e33-4e12-887d-d9e9f8fab1b8"
+						},
+						{
+							"name": "packages",
+							"item": [
+								{
+									"name": "bulk",
+									"item": [
+										{
+											"name": "create Scheduled Package Bulk",
+											"id": "a0422271-16a6-4f95-bbf8-c7a5429c4234",
+											"protocolProfileBehavior": {
+												"disableBodyPruning": true
+											},
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "application/json"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"easyShip",
+														"2022-03-23",
+														"packages",
+														"bulk"
+													]
+												},
+												"description": "This operation automatically schedules a time slot for all the `amazonOrderId`s given as input, generating the associated shipping labels, along with other compliance documents according to the marketplace (refer to the [marketplace document support table](doc:easyship-api-v2022-03-23-use-case-guide#marketplace-support-table)).\n\nDevelopers calling this operation may optionally assign a `packageDetails` object, allowing them to input a preferred time slot for each order in ther request. In this case, Amazon will try to schedule the respective packages using their optional settings. On the other hand, *i.e.*, if the time slot is not provided, Amazon will then pick the earliest time slot possible. \n\nRegarding the shipping label's file format, external developers are able to choose between PDF or ZPL, and Amazon will create the label accordingly.\n\nThis operation returns an array composed of the scheduled packages, and a short-lived URL pointing to a zip file containing the generated shipping labels and the other documents enabled for your marketplace. If at least an order couldn't be scheduled, then Amazon adds the `rejectedOrders` list into the response, which contains an entry for each order we couldn't process. Each entry is composed of an error message describing the reason of the failure, so that sellers can take action.\n\nThe table below displays the supported request and burst maximum rates:\n\n**Usage Plan:**\n\n| Rate (requests per second) | Burst |\n| ---- | ---- |\n| 1 | 5 |\n\nThe `x-amzn-RateLimit-Limit` response header returns the usage plan rate limits that were applied to the requested operation, when available. The table above indicates the default rate and burst values for this operation. Selling partners whose business demands require higher throughput may see higher rate and burst values than those shown here. For more information, see [Usage Plans and Rate Limits in the Selling Partner API](doc:usage-plans-and-rate-limits-in-the-sp-api)."
+											},
+											"response": [
+												{
+													"id": "a9ebbbc1-9790-4de8-a6c0-c8a3fc419102",
+													"name": "Success",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "f0010c74-a771-4fe5-9659-2621262c347c"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "67cd291d-f43b-40c9-bb7b-355fcfd4c669"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "a058f1b6-86c0-4c75-b9d9-623cd38ac72e"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"scheduledPackages\": [\n    {\n      \"packageDimensions\": {\n        \"length\": \"<float>\",\n        \"width\": \"<float>\",\n        \"height\": \"<float>\",\n        \"unit\": \"Cm\",\n        \"identifier\": \"<string>\"\n      },\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Dropoff\"\n      },\n      \"packageWeight\": {\n        \"value\": \"<float>\",\n        \"unit\": \"Grams\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      },\n      \"packageItems\": [\n        {\n          \"orderItemId\": \"<string>\",\n          \"orderItemSerialNumbers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"orderItemId\": \"<string>\",\n          \"orderItemSerialNumbers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"packageIdentifier\": \"<string>\",\n      \"invoice\": {\n        \"invoiceNumber\": \"<string>\",\n        \"invoiceDate\": \"<dateTime>\"\n      },\n      \"packageStatus\": \"ReturnedToSeller\",\n      \"trackingDetails\": {\n        \"trackingId\": \"<string>\"\n      }\n    },\n    {\n      \"packageDimensions\": {\n        \"length\": \"<float>\",\n        \"width\": \"<float>\",\n        \"height\": \"<float>\",\n        \"unit\": \"Cm\",\n        \"identifier\": \"<string>\"\n      },\n      \"packageTimeSlot\": {\n        \"slotId\": \"<string>\",\n        \"startTime\": \"<dateTime>\",\n        \"endTime\": \"<dateTime>\",\n        \"handoverMethod\": \"Pickup\"\n      },\n      \"packageWeight\": {\n        \"value\": \"<float>\",\n        \"unit\": \"G\"\n      },\n      \"scheduledPackageId\": {\n        \"amazonOrderId\": \"<string>\",\n        \"packageId\": \"<string>\"\n      },\n      \"packageItems\": [\n        {\n          \"orderItemId\": \"<string>\",\n          \"orderItemSerialNumbers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"orderItemId\": \"<string>\",\n          \"orderItemSerialNumbers\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"packageIdentifier\": \"<string>\",\n      \"invoice\": {\n        \"invoiceNumber\": \"<string>\",\n        \"invoiceDate\": \"<dateTime>\"\n      },\n      \"packageStatus\": \"LabelCanceled\",\n      \"trackingDetails\": {\n        \"trackingId\": \"<string>\"\n      }\n    }\n  ],\n  \"rejectedOrders\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"error\": {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"details\": \"<string>\"\n      }\n    },\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"error\": {\n        \"code\": \"<string>\",\n        \"message\": \"<string>\",\n        \"details\": \"<string>\"\n      }\n    }\n  ],\n  \"printableDocumentsUrl\": \"<string>\"\n}"
+												},
+												{
+													"id": "d4886d19-af98-4d11-bf35-3c4bf2cf948e",
+													"name": "Request has missing or invalid parameters and cannot be parsed.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Bad Request",
+													"code": 400,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "b8f7f4de-4868-49a2-8ee2-92f594850399"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "730ecd91-b746-40b0-a21a-6225468541a8"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "386f030d-99ca-4ee1-adfb-b947227857f6"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "9aef3100-6106-46e0-8806-b3e6144da040",
+													"name": "The request's Authorization header is not formatted correctly or does not contain a valid token.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Unauthorized",
+													"code": 401,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "11cef25a-1172-4881-a49a-720a710b5797"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "084b21d2-2118-4e19-ac20-06e12fa2d0a7"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "7c2e299c-c8d8-416e-874c-79827045bc4c",
+													"name": "Indicates that access to the resource is forbidden. Possible reasons include Access Denied, Unauthorized, Expired Token, or Invalid Signature.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Forbidden",
+													"code": 403,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "d10723f5-6f0c-46e1-a01e-5a34563d030c"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "99e89611-f170-4b70-afcc-ed5a313cacd6"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "99c25ee5-49c4-4c09-b523-b617c391d750",
+													"name": "The resource specified does not exist.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Not Found",
+													"code": 404,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "4814d05d-b59a-4f46-8e0c-44d6d7f65b82"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Your rate limit (requests per second) for this operation.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RateLimit-Limit",
+															"value": "<string>",
+															"uuid": "bc16ce33-0267-4dfd-adce-ab592e033789"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "f33f0381-504a-495e-a906-fe755bb66277"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "9ce1f977-48a3-4ff7-a948-38205b5efb51",
+													"name": "The request size exceeded the maximum accepted size.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Request Entity Too Large",
+													"code": 413,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "da210a44-b904-42cd-8041-db6860cef96f"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "fa5a18d6-546a-4c37-998c-31ed340a1c6c"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "17a0d277-01be-49db-9620-c0ce803294e1",
+													"name": "The request payload is in an unsupported format.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Unsupported Media Type",
+													"code": 415,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "a338d3f8-29d5-4d26-8459-867dfd98a07e"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "5921e50f-6800-4730-a0ce-bb65eaccd320"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "9c63cc98-7ff0-4c51-9678-43335f8c468e",
+													"name": "The frequency of requests was greater than allowed.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Too Many Requests",
+													"code": 429,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "0a2380c5-fc2d-4882-8cfe-8190a9278a7b"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "2cba97ab-d40b-49ba-99a4-de75a3796cfb"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "fd63a881-c111-46c9-8603-dc42f809885b",
+													"name": "An unexpected condition occurred that prevented the server from fulfilling the request.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Internal Server Error",
+													"code": 500,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "ec4ccaa0-2d9b-4a26-abd4-dc7554e55d7b"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "3df5cf2c-6f79-4f61-be31-b9398962a06e"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												},
+												{
+													"id": "1459822d-2d42-449d-8036-9328d37ad657",
+													"name": "Temporary overloading or maintenance of the server.",
+													"originalRequest": {
+														"method": "POST",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "application/json"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"marketplaceId\": \"<string>\",\n  \"orderScheduleDetailsList\": [\n    {\n      \"amazonOrderId\": \"<string>\",\n      \"packageDetails\": {\n        \"packageTimeSlot\": {\n          \"slotId\": \"<string>\",\n          \"startTime\": \"<dateTime>\",\n          \"endTime\": \"<dateTime>\",\n          \"handoverMethod\": \"Pickup\"\n        },\n        \"packageItems\": [\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"orderItemId\": \"<string>\",\n            \"orderItemSerialNumbers\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"packageIdentifier\": \"<string>\"\n      }\n    }\n  ],\n  \"labelFormat\": \"ZPL\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/easyShip/2022-03-23/packages/bulk",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"easyShip",
+																"2022-03-23",
+																"packages",
+																"bulk"
+															]
+														}
+													},
+													"status": "Service Unavailable",
+													"code": 503,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json",
+															"uuid": "b4c03f9c-574d-458c-ac31-591c652746e0"
+														},
+														{
+															"disabled": false,
+															"description": {
+																"content": "Unique request reference identifier.",
+																"type": "text/plain"
+															},
+															"key": "x-amzn-RequestId",
+															"value": "<string>",
+															"uuid": "7be7c8cb-6b8b-4523-ba2d-26c4a0c5cd4b"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"errors\": [\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    },\n    {\n      \"code\": \"<string>\",\n      \"message\": \"<string>\",\n      \"details\": \"<string>\"\n    }\n  ]\n}"
+												}
+											]
+										}
+									],
+									"id": "a3f5fb99-395b-406b-bc12-9fbf14cd383c"
+								}
+							],
+							"id": "993c05ba-04b2-43e5-a23a-777f635e6119"
+						}
+					],
+					"id": "56296dcf-dcfc-4b14-af06-806faf42255f"
+				}
+			],
+			"id": "036ed000-1232-4337-bba9-8ac8ec70d3fb"
+		}
+	],
+	"variable": [
+		{
+			"id": "c3c451fe-48d1-4b27-b4c8-3b4b04000ada",
+			"key": "baseUrl",
+			"value": "https://sellingpartnerapi-na.amazon.com"
+		}
+	]
+}
